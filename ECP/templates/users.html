@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Список пользователей{% endblock %}
+
+{% block content %}
+<h1>Список пользователей</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Роль</th>
+            <th>Последняя активность</th>
+            <th>Связи</th>
+            <th>Пароль</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.last_activity }}</td>
+            <td>{{ user.connections | join(", ") }}</td>
+            <td>{{ user.password }}</td> 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
